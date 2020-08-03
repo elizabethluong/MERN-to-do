@@ -1,8 +1,9 @@
-import { createStore } from 'redux'
-import { defaultState} from "../../server/defaultState"
+import { createStore } from "redux";
+import { defaultState } from "../../server/defaultState";
 
-export const store = createStore(
-    function reducer(state = defaultState, action) { 
-        return state
-    }
-)
+export const store = createStore(function reducer(
+  state = defaultState,
+  action
+) {
+  return state;
+});
