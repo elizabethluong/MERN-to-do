@@ -7,6 +7,8 @@ const sagaMiddleware = createSagaMiddleware();
 import * as sagas from "./sagas.mock";
 import * as mutations from "./mutations";
 
+
+//REDUCERS
 export const store = createStore(
   combineReducers({
     tasks(tasks = defaultState.tasks, action) {
@@ -23,6 +25,24 @@ export const store = createStore(
               isComplete: false,
             },
           ];
+        case mutations.SET_TASK_COMPLETE:
+          return tasks.map((task) => {
+            return task.id === action.taskID
+              ? { ...task, isComplete: action.isComplete }
+              : task;
+          });
+        case mutations.SET_TASK_NAME:
+          return tasks.map((task) => {
+            return task.id === action.taskID
+              ? { ...task, name: action.name }
+              : task;
+          });
+        case mutations.SET_TASK_GROUP:
+          return tasks.map((task) => {
+            return task.id === action.taskID
+              ? { ...task, group: action.groupID }
+              : task;
+          });
       }
       return tasks;
     },
